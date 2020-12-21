@@ -1,0 +1,27 @@
+-- General notes;
+--  <> optional
+--  [database object]
+
+-- Duplicate a table with data 
+-- note: do not create new table, the script will do that.
+
+select *  into [target table] from [source table] <where <condition>>
+
+
+-- STRING
+
+-- Add leading zeros to a column NCHAR(10) which has leading zeros
+
+update [target table] set [columnA]=RIGHT(REPLICATE('0',10)+CONVERT(VARCHAR,[columnA]),10)
+
+-- Remove tab character
+
+SELECT replace([NOTE], char(9), '***') FROM [database].[dbo].[table]
+
+-- Get a substring before a character (in a string)
+
+DECLARE @dd VARCHAR(200) = 'Net Operating Loss - 2007';
+
+SELECT SUBSTRING(@dd, 1, CHARINDEX('-', @dd) -1) F1,
+       SUBSTRING(@dd, CHARINDEX('-', @dd) +1, LEN(@dd)) F2
+
